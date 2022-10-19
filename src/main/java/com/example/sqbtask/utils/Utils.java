@@ -4,10 +4,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
-@Component
 public  class Utils {
-    private static final String regexPatternForEPP = "^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x.+)?$"; // regex for international phone number checking
-    private static final Pattern patternForEPP = Pattern.compile(regexPatternForEPP);
+    private static final String regexPatternForE164 = "^\\+[1-9]\\d{1,14}$"; // regex for international phone number checking
+    private static final Pattern patternForEPP = Pattern.compile(regexPatternForE164);
 
     public static boolean isPhoneCorrect(String number) {
         return patternForEPP.matcher(number).matches();
