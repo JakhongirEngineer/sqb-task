@@ -27,8 +27,18 @@ class UtilsTest {
         assertTrue(res);
     }
 
-    @Test
-    void isWalletNumberCorrect() {
+    @ParameterizedTest
+    @ValueSource(strings = { "9981234567891234", "1991234568091234", "99991234567843334", "9991o34567895255"})
+    @DisplayName("tests invalid wallet numbers")
+    void isWalletNumberCorrectWithInvalidInput(String walletNumber) {
 
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "9991234567891234", "9991234568091234", "9991234567843334", "9991234567895255" })
+    @DisplayName("tests valid wallet numbers")
+    void isWalletNumberCorrectWithValidInput(String walletNumber) {
+        boolean res = Utils.isWalletNumberCorrect(walletNumber);
+        assertTrue(res);
     }
 }
