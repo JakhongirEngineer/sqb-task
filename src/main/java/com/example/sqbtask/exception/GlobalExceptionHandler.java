@@ -1,5 +1,6 @@
 package com.example.sqbtask.exception;
 
+import com.example.sqbtask.exception.customexception.InvalidWalletOrPhone;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,13 +14,11 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-
-    // TODO: this is an example:
-    @ExceptionHandler({RuntimeException.class})
-    public ResponseEntity<Object> handlerExample(RuntimeException exception, WebRequest webRequest) {
+    @ExceptionHandler({InvalidWalletOrPhone.class})
+    public ResponseEntity<Object> handlerExample(InvalidWalletOrPhone exception, WebRequest webRequest) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
-        body.put("message", "something happened");
+        body.put("message", exception.getMessage());
 
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND); // example
     }

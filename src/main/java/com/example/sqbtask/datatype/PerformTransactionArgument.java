@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,7 +15,7 @@ import java.util.List;
 @Setter
 public class PerformTransactionArgument extends GenericArgument {
     private long amount;
-    private List<GenericParam> parameters;
+    private Map<String, String> parameters;
     private long serviceId;
     private long transactionId;
     private LocalDateTime transactionTime;
