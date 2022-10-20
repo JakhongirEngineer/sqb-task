@@ -1,29 +1,31 @@
 package com.example.sqbtask.controller;
 
-
-import com.example.sqbtask.datatype.PerformTransactionArgument;
-import com.example.sqbtask.datatype.PerformTransactionResult;
+import com.example.sqbtask.datatype.*;
+import com.example.sqbtask.service.TransactionService;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.UtilityClass;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(TransactionController.TransactionEndpoints.BASE_URL)
 public class TransactionController {
 
-    //TODO
+    private final TransactionService transactionService;
+
     public PerformTransactionResult performTransaction(PerformTransactionArgument performTransactionArgument) {
-        return null;
+        return transactionService.performTransaction(performTransactionArgument);
     }
 
     //TODO: not enough description for input and output
-    public void checkTransaction() {
-
+    public CheckTransactionResponse checkTransaction(CheckTransactionRequest checkTransactionRequest) {
+        return transactionService.checkTransaction(checkTransactionRequest);
     }
 
-    //TODO: not enough description for input and output
-    public void cancelTransaction() {
-
+    public CancelTransactionResponse cancelTransaction(CancelTransactionRequest cancelTransactionRequest) {
+        return transactionService.cancelTransaction(cancelTransactionRequest);
     }
 
     @UtilityClass
